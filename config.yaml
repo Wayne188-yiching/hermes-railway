@@ -1,0 +1,87 @@
+model:
+  default: claude-sonnet-4-6
+  provider: anthropic
+  api_mode: chat_completions
+providers: {}
+fallback_providers: []
+toolsets:
+  - hermes-cli
+agent:
+  max_turns: 90
+  gateway_timeout: 1800
+  restart_drain_timeout: 180
+  api_max_retries: 3
+  tool_use_enforcement: auto
+  gateway_timeout_warning: 900
+  clarify_timeout: 600
+  gateway_notify_interval: 180
+  gateway_auto_continue_freshness: 3600
+  image_input_mode: auto
+  disabled_toolsets: []
+  verbose: false
+  reasoning_effort: medium
+  personalities:
+    helpful: You are a helpful, friendly AI assistant.
+    concise: You are a concise assistant. Keep responses brief and to the point.
+    technical: You are a technical expert. Provide detailed, accurate technical information.
+    creative: You are a creative assistant. Think outside the box and offer innovative solutions.
+    kawaii: "You are a kawaii assistant! Use cute expressions and be super enthusiastic about everything!"
+terminal:
+  backend: local
+  timeout: 180
+  persistent_shell: true
+  lifetime_seconds: 300
+web:
+  backend: ''
+  search_backend: ''
+  extract_backend: ''
+display:
+  compact: false
+  personality: kawaii
+  streaming: true
+  final_response_markdown: strip
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  nudge_interval: 10
+  flush_min_turns: 6
+approvals:
+  mode: manual
+  timeout: 60
+  cron_mode: deny
+security:
+  allow_private_urls: false
+  redact_secrets: true
+  tirith_enabled: true
+  tirith_timeout: 5
+  tirith_fail_open: true
+logging:
+  level: INFO
+  max_size_mb: 5
+  backup_count: 3
+telegram:
+  reactions: false
+  channel_prompts: {}
+  allowed_chats: ''
+platform_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - file
+    - memory
+    - messaging
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - vision
+    - web
+  telegram:
+    - hermes-telegram
+sessions:
+  auto_prune: false
+  retention_days: 90
+_config_version: 23
