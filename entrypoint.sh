@@ -16,5 +16,5 @@ EOF
 
 echo "Configuration loaded. Starting gateway..."
 
-# Start hermes gateway in foreground
-exec hermes gateway start
+# Run hermes gateway directly in foreground (correct for Docker)
+exec hermes gateway run
